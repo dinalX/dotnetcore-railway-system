@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddTrain">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="seatCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddTrainResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddTrainResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTrain">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="trainId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="seatCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTrainResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteTrain">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="trainId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteTrainResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAvailableSeats">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="scheduleId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAvailableSeatsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetAvailableSeatsResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddStation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddStationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddStationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateStation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="stationId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateStationResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteStation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="stationId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteStationResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AddSchedule">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="trainId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="departureStationId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="arrivalStationId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="departureTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="arrivalTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddScheduleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddScheduleResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSchedule">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="scheduleId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="trainId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="departureStationId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="arrivalStationId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="departureTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="arrivalTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateScheduleResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteSchedule">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="scheduleId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteScheduleResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetBookings">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetBookingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBookingsResult" type="tns:ArrayOfBooking" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBooking">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Booking" nillable="true" type="tns:Booking" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Booking">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="BookingId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ScheduleId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NIC" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SeatCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PassengerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactInfo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteBooking">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="bookingId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteBookingResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddTrainSoapIn">
+    <wsdl:part name="parameters" element="tns:AddTrain" />
+  </wsdl:message>
+  <wsdl:message name="AddTrainSoapOut">
+    <wsdl:part name="parameters" element="tns:AddTrainResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTrainSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateTrain" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTrainSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateTrainResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTrainSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteTrain" />
+  </wsdl:message>
+  <wsdl:message name="DeleteTrainSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteTrainResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableSeatsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAvailableSeats" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableSeatsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAvailableSeatsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddStationSoapIn">
+    <wsdl:part name="parameters" element="tns:AddStation" />
+  </wsdl:message>
+  <wsdl:message name="AddStationSoapOut">
+    <wsdl:part name="parameters" element="tns:AddStationResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStationSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateStation" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStationSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateStationResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteStationSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteStation" />
+  </wsdl:message>
+  <wsdl:message name="DeleteStationSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteStationResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddScheduleSoapIn">
+    <wsdl:part name="parameters" element="tns:AddSchedule" />
+  </wsdl:message>
+  <wsdl:message name="AddScheduleSoapOut">
+    <wsdl:part name="parameters" element="tns:AddScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateScheduleSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSchedule" />
+  </wsdl:message>
+  <wsdl:message name="UpdateScheduleSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteScheduleSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteSchedule" />
+  </wsdl:message>
+  <wsdl:message name="DeleteScheduleSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBookingsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBookings" />
+  </wsdl:message>
+  <wsdl:message name="GetBookingsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBookingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBookingSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteBooking" />
+  </wsdl:message>
+  <wsdl:message name="DeleteBookingSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteBookingResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AdminServiceSoap">
+    <wsdl:operation name="AddTrain">
+      <wsdl:input message="tns:AddTrainSoapIn" />
+      <wsdl:output message="tns:AddTrainSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTrain">
+      <wsdl:input message="tns:UpdateTrainSoapIn" />
+      <wsdl:output message="tns:UpdateTrainSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTrain">
+      <wsdl:input message="tns:DeleteTrainSoapIn" />
+      <wsdl:output message="tns:DeleteTrainSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableSeats">
+      <wsdl:input message="tns:GetAvailableSeatsSoapIn" />
+      <wsdl:output message="tns:GetAvailableSeatsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddStation">
+      <wsdl:input message="tns:AddStationSoapIn" />
+      <wsdl:output message="tns:AddStationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStation">
+      <wsdl:input message="tns:UpdateStationSoapIn" />
+      <wsdl:output message="tns:UpdateStationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStation">
+      <wsdl:input message="tns:DeleteStationSoapIn" />
+      <wsdl:output message="tns:DeleteStationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSchedule">
+      <wsdl:input message="tns:AddScheduleSoapIn" />
+      <wsdl:output message="tns:AddScheduleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSchedule">
+      <wsdl:input message="tns:UpdateScheduleSoapIn" />
+      <wsdl:output message="tns:UpdateScheduleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSchedule">
+      <wsdl:input message="tns:DeleteScheduleSoapIn" />
+      <wsdl:output message="tns:DeleteScheduleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookings">
+      <wsdl:input message="tns:GetBookingsSoapIn" />
+      <wsdl:output message="tns:GetBookingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBooking">
+      <wsdl:input message="tns:DeleteBookingSoapIn" />
+      <wsdl:output message="tns:DeleteBookingSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AdminServiceSoap" type="tns:AdminServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddTrain">
+      <soap:operation soapAction="http://tempuri.org/AddTrain" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTrain">
+      <soap:operation soapAction="http://tempuri.org/UpdateTrain" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTrain">
+      <soap:operation soapAction="http://tempuri.org/DeleteTrain" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableSeats">
+      <soap:operation soapAction="http://tempuri.org/GetAvailableSeats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStation">
+      <soap:operation soapAction="http://tempuri.org/AddStation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStation">
+      <soap:operation soapAction="http://tempuri.org/UpdateStation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStation">
+      <soap:operation soapAction="http://tempuri.org/DeleteStation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSchedule">
+      <soap:operation soapAction="http://tempuri.org/AddSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSchedule">
+      <soap:operation soapAction="http://tempuri.org/UpdateSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSchedule">
+      <soap:operation soapAction="http://tempuri.org/DeleteSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookings">
+      <soap:operation soapAction="http://tempuri.org/GetBookings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBooking">
+      <soap:operation soapAction="http://tempuri.org/DeleteBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdminServiceSoap12" type="tns:AdminServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddTrain">
+      <soap12:operation soapAction="http://tempuri.org/AddTrain" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTrain">
+      <soap12:operation soapAction="http://tempuri.org/UpdateTrain" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTrain">
+      <soap12:operation soapAction="http://tempuri.org/DeleteTrain" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableSeats">
+      <soap12:operation soapAction="http://tempuri.org/GetAvailableSeats" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddStation">
+      <soap12:operation soapAction="http://tempuri.org/AddStation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStation">
+      <soap12:operation soapAction="http://tempuri.org/UpdateStation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStation">
+      <soap12:operation soapAction="http://tempuri.org/DeleteStation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSchedule">
+      <soap12:operation soapAction="http://tempuri.org/AddSchedule" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSchedule">
+      <soap12:operation soapAction="http://tempuri.org/UpdateSchedule" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSchedule">
+      <soap12:operation soapAction="http://tempuri.org/DeleteSchedule" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookings">
+      <soap12:operation soapAction="http://tempuri.org/GetBookings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBooking">
+      <soap12:operation soapAction="http://tempuri.org/DeleteBooking" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdminService">
+    <wsdl:port name="AdminServiceSoap" binding="tns:AdminServiceSoap">
+      <soap:address location="https://localhost:44386/AdminService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminServiceSoap12" binding="tns:AdminServiceSoap12">
+      <soap12:address location="https://localhost:44386/AdminService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

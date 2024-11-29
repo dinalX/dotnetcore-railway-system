@@ -1,0 +1,31 @@
+Design Overview
+We'll implement a service-oriented architecture (SOA) using ASP.NET Framework. The application will be divided into several services:
+
+Admin Service: Handles train, station, and schedule management.
+Booking Service: Manages train bookings.
+Search Service: Handles train search functionalities.
+API Service: Provides endpoints for external parties (travel agents).
+We'll also create two client applications:
+
+Admin Web Application: For managing trains, stations, and schedules.
+User Web Application: For searching trains and booking tickets.
+Project Structure
+Services (Web API)
+
+- AdminService
+- BookingService
+- SearchService
+- APIService
+Client Applications
+
+- AdminWebApp (ASP.NET Web Forms/MVC)
+- UserWebApp (ASP.NET Web Forms/MVC)
+
+Database Schema
+We'll use a SQL Server database with the following tables:
+
+Admins: Admin login details.
+Trains: Train details.
+Stations: Station details.
+Schedules: Train schedules.
+Bookings: Booking details.
